@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Scraped Products{% endblock %}
+
+{% block content %}
+    <h1>Products</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.index }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Button to export to Excel -->
+    <form action="/export" method="GET">
+        <button type="submit">Export to Excel</button>
+    </form>
+{% endblock %}
